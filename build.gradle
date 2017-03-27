@@ -1,0 +1,48 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
+        classpath 'io.spring.gradle:dependency-management-plugin:0.5.0.RELEASE'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+jar {
+    baseName = 'gs-rest-service'
+    version =  '0.1.0'
+}
+
+ext {
+    springVersion = '4.1.6.RELEASE'
+    springDataVersion = 'Fowler-RELEASE'
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+    maven { url "https://repository.jboss.org/nexus/content/repositories/releases" }
+}
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+
+    compile 'org.hibernate:hibernate-core:5.0.4.Final'
+    compile 'commons-dbcp:commons-dbcp:1.4'
+    compile 'org.javassist:javassist:3.15.0-GA'
+    compile 'org.postgresql:postgresql:9.3-1102-jdbc41'
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
+
